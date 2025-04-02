@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>¡Feliz Cumpleaños Yesica!</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@700&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-color: #fff0f5;
+      color: #d63384;
+      font-family: 'Poppins', sans-serif;
+      overflow-x: hidden;
+      background-image: 
+        radial-gradient(circle at 10% 20%, rgba(255, 200, 239, 0.3) 0%, transparent 20%),
+        radial-gradient(circle at 90% 80%, rgba(255, 200, 239, 0.3) 0%, transparent 20%);
+    }
+
+    .flower-header {
+      background: linear-gradient(135deg, #ff66b3 0%, #ff99cc 100%);
+      color: white;
+      padding: 30px 20px;
+      box-shadow: 0 5px 15px rgba(214, 51, 132, 0.3);
+      position: relative;
+      z-index: 10;
+      border-radius: 0 0 20px 20px;
+    }
+
+    .flower-title {
+      font-family: 'Dancing Script', cursive;
+      font-size: 3.5rem;
+      letter-spacing: 1px;
+      text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+      animation: pulsate 2s infinite;
+    }
+
+    .flower-border {
+      height: 15px;
+      margin: 15px 0;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 10" preserveAspectRatio="none"><path d="M0,5 Q25,10 50,5 T100,5" fill="none" stroke="white" stroke-width="2"/></svg>');
+      background-repeat: repeat-x;
+      background-size: 100px 15px;
+    }
+
+    .butterfly {
+      position: absolute;
+      font-size: 2.5rem;
+      color: white;
+      opacity: 0.8;
+      animation: float 8s infinite ease-in-out;
+      z-index: 5;
+    }
+
+    .butterfly:nth-child(1) {
+      top: 20px;
+      left: 10%;
+      animation-delay: 0s;
+    }
+    
+    .butterfly:nth-child(2) {
+      top: 40px;
+      left: 30%;
+      animation-delay: 1s;
+    }
+    
+    .butterfly:nth-child(3) {
+      top: 20px;
+      left: 60%;
+      animation-delay: 2s;
+    }
+
+    .gallery {
+      padding: 30px 0;
+      background-color: rgba(255, 255, 255, 0.7);
+      border-radius: 20px;
+      margin-top: 20px;
+      backdrop-filter: blur(5px);
+      box-shadow: 0 5px 15px rgba(214, 51, 132, 0.1);
+    }
+
+    .photo-frame {
+      border: 5px solid #ff66b3;
+      border-radius: 15px;
+      margin-bottom: 20px;
+      transform: rotate(-2deg);
+      transition: all 0.4s ease;
+      box-shadow: 5px 5px 15px rgba(214, 51, 132, 0.2);
+      overflow: hidden;
+      background-color: white;
+    }
+    
+    .photo-frame:nth-child(odd) {
+      transform: rotate(2deg);
+    }
+    
+    .photo-frame:hover {
+      transform: scale(1.05) rotate(0);
+      z-index: 2;
+      border-color: #ff3385;
+      box-shadow: 8px 8px 20px rgba(214, 51, 132, 0.3);
+    }
+
+    .confetti {
+      position: fixed;
+      width: 12px;
+      height: 12px;
+      background-color: #ff66b3;
+      border-radius: 50%;
+      opacity: 0.7;
+      animation: fall linear;
+      z-index: 100;
+    }
+
+    .heart-confetti {
+      position: fixed;
+      color: #ff66b3;
+      font-size: 16px;
+      animation: fall linear;
+      z-index: 100;
+    }
+
+    .btn-flower {
+      background-color: #ff66b3;
+      color: white;
+      border: none;
+      padding: 12px 25px;
+      font-weight: bold;
+      border-radius: 30px;
+      box-shadow: 3px 3px 10px rgba(214, 51, 132, 0.3);
+      transition: all 0.3s;
+      font-family: 'Poppins', sans-serif;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-flower:hover {
+      background-color: white;
+      color: #ff66b3;
+      transform: translateY(-3px);
+      box-shadow: 5px 5px 15px rgba(214, 51, 132, 0.4);
+    }
+
+    .message {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-left: 5px solid #ff66b3;
+      padding: 25px;
+      border-radius: 15px;
+      margin: 20px 0;
+      box-shadow: 3px 3px 10px rgba(214, 51, 132, 0.1);
+    }
+
+    .birthday-cake {
+      font-size: 4rem;
+      color: #ff66b3;
+      text-shadow: 2px 2px 5px rgba(0,0,0,0.1);
+      animation: bounce 1s infinite alternate;
+      margin-bottom: 20px;
+    }
+    
+    .age-badge {
+      background-color: #ff66b3;
+      color: white;
+      border-radius: 50%;
+      width: 60px;
+      height: 60px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 1.8rem;
+      font-weight: bold;
+      margin: 0 auto;
+      box-shadow: 3px 3px 10px rgba(214, 51, 132, 0.3);
+      border: 3px solid white;
+    }
+    
+    .flower-decoration {
+      position: fixed;
+      color: #ff99cc;
+      font-size: 24px;
+      opacity: 0.6;
+      z-index: -1;
+    }
+
+    @keyframes pulsate {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0) rotate(0deg); }
+      50% { transform: translateY(-20px) rotate(5deg); }
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px) rotate(0deg); opacity: 1; }
+      100% { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+    }
+    
+    @keyframes bounce {
+      from { transform: translateY(0); }
+      to { transform: translateY(-15px); }
+    }
+    
+    .audio-container {
+      background-color: rgba(255, 255, 255, 0.8);
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+      box-shadow: 3px 3px 10px rgba(214, 51, 132, 0.1);
+    }
+    
+    .floral-divider {
+      height: 30px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30" preserveAspectRatio="none"><path d="M10,15 Q25,5 40,15 T70,15 T100,15" fill="none" stroke="%23ff66b3" stroke-width="2"/></svg>');
+      background-repeat: repeat-x;
+      background-size: 100px 30px;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Decoraciones de flores -->
+  <div class="butterfly"><i class="fas fa-butterfly"></i></div>
+  <div class="butterfly"><i class="fas fa-butterfly"></i></div>
+  <div class="butterfly"><i class="fas fa-butterfly"></i></div>
+  
+  <header class="flower-header text-center">
+    <h1 class="flower-title">¡Feliz Cumpleaños Yesica!</h1>
+    <div class="age-badge mb-3">23</div>
+    <div class="flower-border"></div>
+  </header>
+
+  <div class="container my-4">
+    <div class="row justify-content-center">
+      <div class="col-md-8 text-center">
+        <div class="birthday-cake">
+          <i class="fas fa-birthday-cake"></i>
+        </div>
+        <div class="message">
+          <h2 style="font-family: 'Dancing Script', cursive;">¡23 Primaveras!</h2>
+          <p>Feliz Cumpleaños mi amiga guapa, que este nuevo año de vida esté lleno de alegría, amor y muchas bendiciones. Que cada día seas más feliz y todos tus sueños se hagan realidad.</p>
+          <p>Con cariño❤️</p>
+        </div>
+        
+        <div class="floral-divider"></div>
+        
+        <div class="audio-container">
+          <h4 style="color: #d63384; margin-bottom: 15px;"><i class="fas fa-music"></i> Un mensaje especial para ti</h4>
+          <iframe width="100%" height="100" scrolling="no" frameborder="no" allow="autoplay" src="https://vocaroo.com/embed/1haXxohFi0I6?autoplay=0"></iframe>
+        </div>
+        
+        <div class="floral-divider"></div>
+      </div>
+    </div>
+
+    <div class="gallery">
+      <h3 class="text-center mb-4" style="font-family: 'Dancing Script', cursive; color: #d63384; font-size: 2.5rem;">Nuestros Momentos</h3>
+      <div class="row">
+        <div class="col-md-4">
+          <div class="photo-frame">
+            <img src="/imagenes/fer1.jpg" alt="Yesica" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="photo-frame">
+            <img src="/imagenes/fer5.jpg" alt="Yesica" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="photo-frame">
+            <img src="/imagenes/fer4.jpg" alt="Yesica" class="img-fluid">
+          </div>
+        </div>
+      </div>
+      <div class="row mt-4">
+        <div class="col-md-4">
+          <div class="photo-frame">
+            <img src="/imagenes/fer2.jpg" alt="Yesica" class="img-fluid">
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="photo-frame">
+            <img src="/imagenes/fer3.jpg" alt="Yesica" class="img-fluid">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Crear decoraciones de flores
+    function createFlowers() {
+      const flowers = ['fa-heart', 'fa-leaf', 'fa-feather', 'fa-star', 'fa-cloud'];
+      for (let i = 0; i < 15; i++) {
+        const flower = document.createElement('i');
+        flower.classList.add('flower-decoration', 'fas', flowers[i % flowers.length]);
+        flower.style.left = Math.random() * 100 + 'vw';
+        flower.style.top = Math.random() * 100 + 'vh';
+        flower.style.fontSize = (Math.random() * 20 + 10) + 'px';
+        flower.style.transform = `rotate(${Math.random() * 360}deg)`;
+        flower.style.opacity = Math.random() * 0.4 + 0.2;
+        document.body.appendChild(flower);
+      }
+    }
+    
+    // Crear confeti al cargar la página
+    function createConfetti() {
+      const colors = ['#ff66b3', '#ff99cc', '#ff3385', '#ff80b3', '#e91e63', '#ff1493'];
+      
+      for (let i = 0; i < 50; i++) {
+        setTimeout(() => {
+          // Confeti normal
+          const confetti = document.createElement('div');
+          confetti.classList.add('confetti');
+          confetti.style.left = Math.random() * 100 + 'vw';
+          confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+          confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+          document.body.appendChild(confetti);
+          setTimeout(() => { confetti.remove(); }, 3000);
+          
+          // Confeti de corazones
+          const heart = document.createElement('i');
+          heart.classList.add('heart-confetti', 'fas', 'fa-heart');
+          heart.style.left = Math.random() * 100 + 'vw';
+          heart.style.fontSize = (Math.random() * 10 + 12) + 'px';
+          heart.style.animationDuration = Math.random() * 2 + 3 + 's';
+          heart.style.color = colors[Math.floor(Math.random() * colors.length)];
+          document.body.appendChild(heart);
+          setTimeout(() => { heart.remove(); }, 3000);
+        }, i * 100);
+      }
+    }
+    
+    // Inicializar
+    document.addEventListener('DOMContentLoaded', function() {
+      createFlowers();
+      createConfetti();
+      
+      // Crear más confeti al hacer clic en cualquier parte
+      document.body.addEventListener('click', function() {
+        createConfetti();
+      });
+    });
+  </script>
+  
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

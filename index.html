@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cumple23</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500&display=swap');
+    
+    body {
+      background-color: #FDB7EA;
+      font-family: 'Orbitron', sans-serif;
+      color: white;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+      padding: 20px;
+    }
+
+    .image-container {
+      position: relative;
+      width: 320px;
+      height: 320px;
+      margin: 15px;
+      cursor: pointer;
+      transition: transform 0.3s, box-shadow 0.3s;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 10px;
+      overflow: hidden;
+      border: 3px solid #FFD700;
+      box-shadow: 0 0 15px rgba(255, 215, 0, 0.7);
+    }
+
+    .image-container img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .image-container .number {
+      position: absolute;
+      top: 5px;
+      right: 5px;
+      background-color: rgba(0, 0, 0, 0.7);
+      color: #FFD700;
+      width: 25px;
+      height: 25px;
+      border-radius: 50%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-weight: bold;
+    }
+
+    /* Media query para dispositivos más pequeños */
+    @media (max-width: 576px) {
+    .flagsMAX {
+    width: 320px !important;  /* Aumentado de 280px a 320px */
+    }
+      
+      #birthdayMessage {
+        font-size: 1.8rem !important;
+      }
+      
+      #clickMessage {
+        font-size: 1.2rem !important;
+      }
+      
+      .flagsMAX {
+        width: 280px !important;
+      }
+      
+      .flags {
+        width: 120px !important;
+      }
+      
+      #message {
+        font-size: 1.5rem !important;
+      }
+    }
+
+    .image-container:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 25px rgba(255, 215, 0, 1);
+    }
+
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: #ff0;
+      border-radius: 50%;
+      animation: fall 3s ease-out;
+    }
+
+    @keyframes fall {
+      0% { transform: translateY(-100px); opacity: 1; }
+      100% { transform: translateY(100vh); opacity: 0; }
+    }
+
+    .images-container {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 2rem;
+      color: #FFD700;
+      text-shadow: 0 0 10px #FFD700;
+      display: none;
+      text-align: center;
+      animation: fadeIn 1s ease-in;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .flags {
+      width: 200px;
+      animation: wave 1s infinite alternate;
+      max-width: 100%;
+    }
+
+    .flagsMAX {
+        width: 400px;  /* Cambiado de 400px a 500px */
+        max-width: 100%;
+        height: auto;
+        border: 4px solid #FFEBD4;  /* Añadido borde para destacar */
+        border-radius: 15px;  /* Añadido bordes redondeados */
+        box-shadow: 0 5px 20px rgba(255, 235, 212, 0.6);  /* Sombra más pronunciada */
+        transition: transform 0.3s ease;  /* Animación al hacer hover */
+    }
+
+    .flagsMAX:hover {
+        transform: scale(1.05);  /* Efecto de crecimiento al pasar el mouse */
+    }
+
+    #birthdayMessage {
+      font-size: 2.5rem;
+      color: #FFEBD4;
+      text-shadow: 0 0 15px #FFEBD4;
+      margin-bottom: 10px;
+      text-align: center;
+    }
+
+    .subtitle {
+      font-size: 1.5rem;
+      color: #FFEBD4;
+      text-shadow: 0 0 10px #FFEBD4;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    #clickMessage {
+      font-size: 1.8rem;
+      color: #FFEBD4;
+      text-shadow: 0 0 10px #FFEBD4;
+      animation: blink 1.5s infinite;
+      margin-bottom: 20px;
+      text-align: center;
+    }
+
+    @keyframes blink {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    @keyframes wave {
+      0% { transform: rotate(-5deg); }
+      100% { transform: rotate(5deg); }
+    }
+    
+    .img-fluid {
+      max-width: 100%;
+      height: auto;
+    }
+
+    /* Clase para precarga */
+    .preload {
+      position: absolute;
+      left: -9999px;
+      top: -9999px;
+      visibility: hidden;
+    }
+  </style>
+</head>
+<body>
+  <!-- Precarga de imágenes (ocultas) -->
+  <div class="preload">
+    <img src="/imagenes/Yes1.jpeg">
+    <img src="/imagenes/Yes2.jpeg">
+    <img src="/imagenes/Yes3.jpeg">
+    <img src="/imagenes/Yes4.jpeg">
+    <img src="/imagenes/Yes5.jpeg">
+    <img src="/imagenes/Yes6.jpeg">
+    <img src="/imagenes/Yes7.jpeg">
+    <img src="/imagenes/Yes8.jpeg">
+    <img src="/imagenes/Yes9.jpeg">
+    <img src="/imagenes/Yes10.jpeg">
+    <img src="/imagenes/Yes11.jpeg">
+    <img src="/imagenes/Yes12.jpeg">
+    <img src="/imagenes/Yes13.jpeg">
+    <img src="/imagenes/Yes14.jpeg">
+    <img src="/imagenes/Yes15.jpeg">
+    <img src="/imagenes/Yes16.jpeg">
+    <img src="/imagenes/Yes17.jpeg">
+    <img src="/imagenes/Yes18.jpeg">
+    <img src="/imagenes/Yes19.jpeg">
+    <img src="/imagenes/Yes20.jpeg">
+    <img src="/imagenes/Yes21.jpeg">
+    <img src="/imagenes/Yes22.jpeg">
+    <img src="/imagenes/Yes23.jpeg">
+  </div>
+
+  <div class="container-fluid">
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <h1 id="birthdayMessage">🎉 Feliz cumpleaños Yesica! 🎉</h1>
+        
+
+        <div id="imagesContainer" class="images-container">
+          <div id="image1" class="image-container" onclick="popImage(1)">
+            <img src="/imagenes/Yes12.jpeg" alt="Imagen 1">
+            <div class="number">1</div>
+          </div>
+          <h2 id="clickMessage">Ya se la sabe jaja, haga click en la imagen para comenzar 🖼️</h2>
+        </div>
+      </div>
+    </div>
+
+    <div class="row justify-content-center">
+      <div class="col-12 text-center">
+        <div id="message">
+          ¡Felicidades Renecito! 🎉🏁
+          <br>
+          <div class="row justify-content-center mt-3">
+            <div class="col-12">
+              <img class="flags img-fluid" src="/imagenes/Yes1.jpeg" alt="Imagen final 1">
+            </div>
+            <div class="col-12 mt-3">
+              <img class="flagsMAX img-fluid" src="/imagenes/Yes10.jpeg" alt="Imagen final 2">
+            </div>
+            <div class="col-12 mt-3">
+              <img class="flags img-fluid" src="/imagenes/Yes11.jpeg" alt="Imagen final 3">
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    let currentImage = 1;
+    let usedImages = [12]; // Inicialmente ya usamos la imagen 12
+    
+    // Todas las imágenes disponibles (1-22)
+    const allImages = Array.from({length: 23}, (_, i) => i + 1);
+    
+    function getRandomUnusedImage() {
+      // Filtramos las imágenes no usadas
+      const availableImages = allImages.filter(img => !usedImages.includes(img));
+      
+      if (availableImages.length === 0) {
+        return null; // Todas las imágenes han sido usadas
+      }
+      
+      // Seleccionamos una aleatoria
+      const randomIndex = Math.floor(Math.random() * availableImages.length);
+      const selectedImage = availableImages[randomIndex];
+      
+      // La marcamos como usada
+      usedImages.push(selectedImage);
+      
+      return selectedImage;
+    }
+
+    function popImage(imageNumber) {
+      const confettiCount = 50;
+      document.getElementById('clickMessage').style.display = 'none';
+      
+      // Crear confeti
+      for (let i = 0; i < confettiCount; i++) {
+        createConfetti();
+      }
+
+      // Ocultar la imagen actual
+      document.getElementById('image' + imageNumber).style.display = 'none';
+      currentImage++;
+
+      if (currentImage <= 23) {
+        const nextImageNumber = getRandomUnusedImage();
+        
+        if (nextImageNumber) {
+          const newImageContainer = document.createElement('div');
+          newImageContainer.classList.add('image-container');
+          newImageContainer.id = 'image' + currentImage;
+          
+          newImageContainer.innerHTML = `
+            <img src="/imagenes/Yes${nextImageNumber}.jpeg" alt="Imagen ${currentImage}">
+            <div class="number">${currentImage}</div>
+          `;
+          newImageContainer.onclick = function() { popImage(currentImage); };
+          document.getElementById('imagesContainer').appendChild(newImageContainer);
+        }
+      } else {
+        // Mostrar mensaje final con animación
+        document.getElementById('message').style.display = 'block';
+        
+        // Redirigir después de 5 segundos (tiempo suficiente para ver el mensaje)
+        setTimeout(function() {
+          window.location.href = 'Cumple.html';
+        }, 5000);
+      }
+    }
+
+    function createConfetti() {
+      const confetti = document.createElement('div');
+      confetti.classList.add('confetti');
+      confetti.style.left = Math.random() * 100 + 'vw';
+      confetti.style.backgroundColor = getRandomColor();
+      confetti.style.animationDuration = Math.random() * 2 + 3 + 's';
+      document.body.appendChild(confetti);
+      setTimeout(() => { confetti.remove(); }, 3000);
+    }
+    
+    function getRandomColor() {
+      const colors = ['#ff0000', '#00ff00', '#0000ff', '#ffff00', '#ff00ff', '#00ffff'];
+      return colors[Math.floor(Math.random() * colors.length)];
+    }
+
+    // Precarga de imágenes al cargar la página
+    window.addEventListener('load', function() {
+      console.log('Todas las imágenes han sido precargadas');
+    });
+  </script>
+  
+  <!-- Bootstrap JS (opcional) -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
